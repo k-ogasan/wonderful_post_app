@@ -3,6 +3,7 @@ class SampleArticlesController < ApplicationController
 
   # GET /sample_articles or /sample_articles.json
   def index
+    puts 'a'
     @sample_articles = SampleArticle.all
   end
 
