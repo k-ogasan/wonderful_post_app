@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show ]
+  before_action :set_article, only: %i[ show edit update ]
 
   # GET /articles
   def index
@@ -13,6 +13,17 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+  end
+
+  def edit
+  end
+
+  def update
+    if @article.update(article_params)
+      redirect_to @article, notice: "Article was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # POST /articles
