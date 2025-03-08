@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
-
 <h1>記事</h1>
-
+<% if user_signed_in? %>
+          <div class="XXXX">
+            <%= link_to  "投稿する", "/articles/new", class: "YYYY" %>
+          </div>
+        <% else %>
+          <div class="ZZZZ">
+            <%= link_to "ログイン", new_user_session_path, class: 'YYYY' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'YYYY' %>
+          </div>
+        <% end %>
 <table>
   <thead>
     <tr>
@@ -16,7 +24,9 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
-        <td><%= link_to '編集', edit_article_path(article) %></td>
+        <td><% if @editable %>
+                 <%= link_to "編集", edit_article_path(@article) %>
+                 <% end %>
         <td><%= link_to '一覧表示', article %></td>
         <td><%= button_to "削除", article, method: :delete %></td>
       </tr>
@@ -25,5 +35,3 @@
 </table>
 
 <br>
-
-<%= link_to '記事作成', new_article_path %>

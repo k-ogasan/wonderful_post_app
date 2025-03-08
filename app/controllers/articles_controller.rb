@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
-
+  skip_before_action :authenticate_user!, only: %i[ index show ]
+  before_action :set_article, only: %i[edit update destroy ]
+require'pry'
   # GET /articles
   def index
     @articles = Article.all
@@ -8,10 +9,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
+    @article = Article.find(params[:id])
   end
 
   # GET /articles/new
   def new
+    # binding.pry
     @article = Article.new
   end
 
@@ -28,11 +31,15 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
-    @article = Article.new(article_params)
+
+    # @article = current_user.Article.new(article_params)
+    @article = current_user.articles.build(article_params)
+    # binding.prys
     if @article.save
       redirect_to @article, notice: "Article was successfully created."
     else
       render :new, status: :unprocessable_entity
+      # puts @article.errors.full_messages
     end
   end
 
@@ -43,7 +50,8 @@ class ArticlesController < ApplicationController
 
   private
     def set_article
-      @article = Article.find(params[:id])
+      # @article = Article.find(params[:id])
+      @article = current_user.articles.find(params[:id])
     end
 
     def article_params
