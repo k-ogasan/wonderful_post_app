@@ -24,9 +24,7 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
-        <td><% if @editable %>
-                 <%= link_to "編集", edit_article_path(@article) %>
-                 <% end %>
+        <td><%= link_to '編集', edit_article_path(article) %></td>
         <td><%= link_to '一覧表示', article %></td>
         <td><%= button_to "削除", article, method: :delete %></td>
       </tr>
