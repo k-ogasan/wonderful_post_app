@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'articles/index'
-  resources :sample_articles
   resources :articles
   root to: 'articles#index'
   devise_for :users
