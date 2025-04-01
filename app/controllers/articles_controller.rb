@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
 require'pry'
   # GET /articles
   def index
-    @articles = Article.all
+    # @articles = Article.page(params[:page]).per(10)
+    @articles = Article.all.page params[:page]
   end
 
   # GET /articles/1

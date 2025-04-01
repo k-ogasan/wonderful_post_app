@@ -1,3 +1,4 @@
+<%= paginate @articles %>
 <p id="notice"><%= notice %></p>
 <h1>記事</h1>
 <% if user_signed_in? %>
@@ -27,6 +28,8 @@
         <td><%= link_to '編集', edit_article_path(article) %></td>
         <td><%= link_to '一覧表示', article %></td>
         <td><%= button_to "削除", article, method: :delete %></td>
+
+
       </tr>
     <% end %>
   </tbody>

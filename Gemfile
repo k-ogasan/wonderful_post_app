@@ -35,6 +35,8 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-doc"
   gem 'rails-i18n'
+  gem 'kaminari'
+  gem 'kaminari-bootstrap'
 end
 
 group :development do

@@ -29,6 +29,7 @@
   i += 1
   user = User.find_or_create_by!(email: "user00#{i}@test.com") do |_user|
     _user.password = 'test1234'
+    _user.name = "おが#{i}"
   end
 
   50.times do |ii|
