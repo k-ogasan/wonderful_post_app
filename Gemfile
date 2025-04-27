@@ -36,7 +36,7 @@ group :development, :test do
   gem "pry-doc"
   gem 'rails-i18n'
   gem 'kaminari'
-  gem 'kaminari-bootstrap'
+  gem 'kaminari-bootstrap4'
 end
 
 group :development do

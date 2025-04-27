@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_many :articles
-  # validates :name ,uniqueness: true
   validates :email ,uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -5,7 +5,9 @@ require'pry'
   # GET /articles
   def index
     # @articles = Article.page(params[:page]).per(10)
-    @articles = Article.all.page params[:page]
+    articles = Article.all
+    articles = articles.where("title LIKE ?", "%#{params[:title]}%") if params[:title].present?
+    @articles = articles.page params[:page]
   end
 
   # GET /articles/1
