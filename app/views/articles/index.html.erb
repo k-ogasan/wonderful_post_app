@@ -1,6 +1,7 @@
 <%= paginate @articles %>
 <p id="notice"><%= notice %></p>
 <h1>記事</h1>
+<%= render partial: "search" %>
 <% if user_signed_in? %>
           <div class="XXXX">
             <%= link_to  "投稿する", "/articles/new", class: "YYYY" %>
